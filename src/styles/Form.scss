@@ -34,6 +34,7 @@ form {
     border-radius: 3px;
     font-size: 1.25rem;
     padding-right: 50px;
+    transition: border 0.2s ease-in-out;
 
     &:hover {
       border: 1px solid var(--hover-color);

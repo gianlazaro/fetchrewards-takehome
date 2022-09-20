@@ -2,10 +2,10 @@
   display: flex;
   flex-direction: column;
 
-  & > span {
+  span {
     font-style: italic;
   }
-  & > p {
+  p {
     margin: 1rem 0;
   }
 }

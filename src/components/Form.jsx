@@ -9,6 +9,7 @@ function Form() {
   const [occupations, setOccupations] = useState([]);
   const [user, setUser] = useState({});
   const [isComplete, setIsComplete] = useState(false);
+  const [isBtnDisabled, setIsBtnDisabled] = useState(true);
   const defaultInput = "";
 
   useEffect(() => {
@@ -20,6 +21,16 @@ function Form() {
       })
       .catch((err) => console.error(err));
   }, []);
+
+  useEffect(() => {
+    const { fullName: name, email, password, occupation, state } = user;
+
+    if (name && email && password && occupation && state) {
+      setIsBtnDisabled(false);
+    } else {
+      setIsBtnDisabled(true);
+    }
+  }, [user]);
 
   function handleChange(e) {
     setUser({ ...user, [e.target.id]: e.target.value });
@@ -94,7 +105,7 @@ function Form() {
               handleChange={handleChange}
               value={user.state}
             />
-            <input type="submit" />
+            <input type="submit" disabled={isBtnDisabled}/>
           </form>
         </>
       )}
